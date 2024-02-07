@@ -1,0 +1,49 @@
+h1 {
+    font-size: 22px;
+    color: #FF0000;
+    color: #00FF00;
+    color: #0000FF;
+}
+
+div {
+    background-color: #00FF00;
+}
+
+#texto1 {
+    color: #0000FF;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    font-style: italic;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.box1 {
+    background-color: aqua;
+    width: 600px;
+    height: 60px;
+}
+
+.box2 {
+    background-color: red;
+    width: 50%;
+    height: 60px;
+}
+
+.borda {
+    border: 300px;
+    padding: 10px;
+    margin: 20px;
+    border: 5px solid black;
+    background-color: gray;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: 4px -4px;
+    
+}
+/* control + k + c - adicionar
+e control + k + u - remover */
