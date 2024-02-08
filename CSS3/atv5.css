@@ -24,7 +24,8 @@ body {
     background-color: aqua;
     width: 600px;
     height: 60px;
-}
+    background-attachment: fixed;
+}   
 
 .box2 {
     background-color: red;
