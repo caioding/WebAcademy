@@ -1,0 +1,15 @@
+.nebulosa {
+    width: 25%;
+    border: 6px solid orange;
+    color: white;
+    background-color: black;
+    margin: 6%;
+    padding: 2%;
+    border-radius: 5%;
+    text-align: center;
+}
+
+body {
+    background-image: url(../img/i612620.webp);
+    background-repeat: no-repeat;
+}
