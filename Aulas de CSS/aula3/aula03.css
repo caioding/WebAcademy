@@ -1,0 +1,38 @@
+.container {
+    background-color: blueviolet;
+    border: 1px solid black;
+    height: calc(100vh - 16px);
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-auto-rows: 40px;
+    grid-template-areas: "h h h h h"
+    "nav main main main ads"
+    "footer footer footer footer footer";
+    gap: 8px;
+    box-sizing: border-box;
+    justify-items: stretch;
+}
+
+.container > header {
+    grid-area: h;
+}
+
+.container > nav {
+    grid-area: nav;
+}
+
+.container > main {
+    grid-area: main;
+}
+
+.container > aside {
+    grid-area: ads;
+}
+
+.container > footer {
+    grid-area: footer;
+}
+
+.container > * {
+    background-color: coral;
+}
