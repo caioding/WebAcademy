@@ -4,42 +4,42 @@
     box-sizing: border-box;
     gap: 8px;
     padding: 8px;
-    grid-template-areas: "head head head head head"
-    "sb1 sb1 sb1 sb1 sb1"
-    "main main main main main"
-    "sb2 sb2 sb2 sb2 sb2"
-    "foot foot foot foot foot"
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "b1 b1 b1 b1 b1"
+    "b2 b2 b2 b3 b3"
+    "b2 b2 b2 b4 b5"    
     ;
   }
   
   .container > div.box1 {
-    grid-area: head;
+    grid-area: b1;
     background-color: darkred;
   }
   
   .container > div.box2 {
-    grid-area: sb1;
+    grid-area: b2;
     background-color: darkolivegreen;
   }
   
   .container > div.box3 {
-    grid-area: main;
+    grid-area: b3;
     background-color: darkblue;
   }
   
   .container > div.box4 {
-    grid-area: sb2;
+    grid-area: b4;
     background-color: darkorange;
   }
   
   .container > div.box5 {
-    grid-area: foot;
+    grid-area: b5;
     background-color: darkslategray
   }
-
+  
   .container > * {
     border-radius: 8px;
     padding: 8px;
-    box-sizing: border-box;
     color: white;
   }  
