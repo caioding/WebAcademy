@@ -1,5 +1,28 @@
 * {
-    box-sizing: border-box;
+  height: calc(100vh - 16px);
+  display: grid;
+  box-sizing: border-box;
+  gap: 8px;
+  padding: 8px;
+  grid-template-areas:
+  "head" 
+  "link"
+  "main" 
+  "side" 
+  "card";
+  }
+
+  @media screen and (min-width: 768px) {
+    * {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+      "head head link link link"
+      "main main main side side"
+      "card card card side side"
+      "card card card side side";
+    }
+    
   }
   
   html {
@@ -23,6 +46,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    grid-area: link;
   }
   
   header a {
@@ -38,10 +62,12 @@
     font-style: italic;
     font-weight: bold;
     padding: 1em;
+    grid-area: head;
   }
   
   main {
     padding: 0 1em;
+    grid-area: main;
   }
   
   .cards {
@@ -53,6 +79,7 @@
   .cards li {
     border: 5px solid #000;
     margin-bottom: 1em;
+    grid: card;
   }
   
   .cards h2 {
@@ -71,4 +98,5 @@
     border: 5px solid #000;
     padding: 0.5em 1em;
     color: #fff;
+    grid-area: side;
   }
