@@ -24,7 +24,6 @@ for (const image of images) {
   });
 }
 
-
 btn.addEventListener('click', () => {
   const btnClass = btn.getAttribute('class');
   if (btnClass === 'dark') {
