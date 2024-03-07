@@ -1,0 +1,47 @@
+<body>
+    <h1>To-do</h1>
+
+    <div>
+        <p id="lista-titulo" name="lista">Lista de atividades:</p>
+    </div>
+
+    <div>
+        <input id="novoItemInput" placeholder="Digite aqui o item" />
+        <button onclick="adicionarItem()">Adicionar</button>
+    </div>
+
+    <ul id="lista-itens">
+        <li>item a</li>
+    </ul>
+
+    <div>
+        <button onclick="removerUltimoItem()">Remover último item</button>
+    </div>
+
+    <script>
+        function adicionarItem() {
+            var novoItemTexto = document.getElementById("novoItemInput").value;
+
+            if (novoItemTexto.trim() !== "") {
+                var novoItem = document.createElement("li");
+                novoItem.textContent = novoItemTexto;
+                document.getElementById("lista-itens").appendChild(novoItem);
+                document.getElementById("novoItemInput").value = "";
+            } else {
+                alert("Digite um item válido antes de adicionar.");
+            }
+        }
+
+        function removerUltimoItem() {
+            var listaItens = document.getElementById("lista-itens");
+
+            if (listaItens.children.length > 0) {
+                listaItens.removeChild(listaItens.lastElementChild);
+            } else {
+                alert("A lista está vazia. Não há itens para remover.");
+            }
+        }
+    </script>
+</body>
+
+</html>

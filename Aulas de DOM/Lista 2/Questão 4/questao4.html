@@ -1,0 +1,22 @@
+<body>
+    <h1>Várias listas</h1>
+
+    <div>
+        <p id="lista-titulo" name="lista">Lista de itens:</p>
+    </div>
+
+    <ul id="lista-itens-1">
+        <li id="one" class="hot">item a</li>
+        <li id="two" class="hot">item b</li>
+        <li id="three" class="hot">item c</li>
+        <li id="four">item d</li>
+    </ul>
+
+    <script>
+        var listaItens = document.getElementById("lista-itens-1");
+        console.log("Lista antes da remoção:", listaItens.innerHTML);
+        var ultimoItem = listaItens.lastElementChild;
+        listaItens.removeChild(ultimoItem);
+        console.log("Lista após a remoção:", listaItens.innerHTML);
+    </script>
+</body>
