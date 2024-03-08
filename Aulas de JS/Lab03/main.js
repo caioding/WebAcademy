@@ -12,11 +12,9 @@ function random(min, max) {
   return num;
 };
 
-
 function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
-
 class Shape {
 
   constructor(x, y, velX, velY) {
@@ -27,7 +25,6 @@ class Shape {
   }
 
 }
-
 class Ball extends Shape {
 
   constructor(x, y, velX, velY, color, size) {
@@ -66,7 +63,6 @@ class Ball extends Shape {
     this.y += this.velY;
   }
 
-
   collisionDetect() {
     for (const ball of balls) {
       if (!(this === ball) && ball.exists) {
@@ -82,7 +78,6 @@ class Ball extends Shape {
   }
 
 }
-
 class EvilCircle extends Shape {
 
   constructor(x, y) {
