@@ -2,11 +2,11 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config({path: `.env.${process.env.NODE_ENV}`});
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 // import {stringUtils} from "./utils/strings.js"
 
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 
 const PORT = process.env.PORT ?? 3333;
 
@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
 
       // Define os cabeçalhos da resposta
       res.writeHead(200, { 'Content-Type': 'text/html' });
-      
+
       // Envia a resposta ao cliente
       res.end(html);
     }
@@ -49,8 +49,9 @@ server.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
 
-// comando:  
-// node index.js ./pasta/
-// npm start ./pasta/
+// comandos:
+// node index.js ../arquivos_public
+// node index.js
+// npm start ../arquivos_public
 // npx nodemon index.js
 // npm run start:prod
