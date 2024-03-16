@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 const lorem = new LoremIpsum();
 
-// Middleware para servir arquivos estáticos
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
