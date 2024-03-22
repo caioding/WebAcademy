@@ -1,1 +1,5 @@
 https://stackoverflow.com/questions/44549733/how-to-use-visual-studio-code-as-the-default-editor-for-git-mergetool-including
+
+Comandos node:
+nvm install --lts (instala a versão mais recente)
+nvm use --lts (usa a versão)
