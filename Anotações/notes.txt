@@ -3,3 +3,5 @@ https://stackoverflow.com/questions/44549733/how-to-use-visual-studio-code-as-th
 Comandos node:
 nvm install --lts (instala a versão mais recente)
 nvm use --lts (usa a versão)
+
+ver se vai
