@@ -1,7 +1,6 @@
 {
   "name": "express",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon src/index.ts",
@@ -31,5 +30,6 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
-  }
+  },
+  "description": ""
 }
