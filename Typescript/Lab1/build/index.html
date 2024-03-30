@@ -1,0 +1,127 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #lembrete-form {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="datetime-local"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .lembrete {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <div id="lembrete-form">
+        <h2>Novo Lembrete</h2>
+        <input type="text" id="titulo" placeholder="Título" required><br>
+        <input type="datetime-local" id="dataInsercao" required><br>
+        <input type="datetime-local" id="dataLimite" required><br>
+        <textarea id="descricao" placeholder="Descrição" required></textarea><br>
+        <button onclick="adicionarLembrete()">Adicionar Lembrete</button>
+    </div>
+    <div id="lembretes-container"></div>
+
+    <script>
+        let lembretes = [];
+
+        function adicionarLembrete() {
+            const titulo = document.getElementById("titulo").value;
+            const dataInsercao = document.getElementById("dataInsercao").value;
+            const dataLimite = document.getElementById("dataLimite").value;
+            const descricao = document.getElementById("descricao").value;
+
+            lembretes.push({
+                titulo: titulo,
+                dataInsercao: new Date(dataInsercao),
+                dataLimite: new Date(dataLimite),
+                descricao: descricao
+            });
+
+            atualizarListaLembretes();
+            limparFormulario();
+        }
+
+        function editarLembrete(index) {
+            const titulo = prompt("Novo título:");
+            const dataInsercao = prompt("Nova data e hora de inserção (YYYY-MM-DDTHH:MM):");
+            const dataLimite = prompt("Nova data limite (YYYY-MM-DDTHH:MM):");
+            const descricao = prompt("Nova descrição:");
+
+            lembretes[index] = {
+                titulo: titulo,
+                dataInsercao: new Date(dataInsercao),
+                dataLimite: new Date(dataLimite),
+                descricao: descricao
+            };
+
+            atualizarListaLembretes();
+        }
+
+        function excluirLembrete(index) {
+            if (confirm("Tem certeza que deseja excluir este lembrete?")) {
+                lembretes.splice(index, 1);
+                atualizarListaLembretes();
+            }
+        }
+
+        function atualizarListaLembretes() {
+            const lembretesContainer = document.getElementById("lembretes-container");
+            lembretesContainer.innerHTML = "";
+
+            lembretes.forEach((lembrete, index) => {
+                const lembreteDiv = document.createElement("div");
+                lembreteDiv.classList.add("lembrete");
+                lembreteDiv.innerHTML = `
+                    <h3>${lembrete.titulo}</h3>
+                    <p><strong>Data e Hora de Inserção:</strong> ${lembrete.dataInsercao.toLocaleString()}</p>
+                    <p><strong>Data Limite:</strong> ${lembrete.dataLimite.toLocaleString()}</p>
+                    <p><strong>Descrição:</strong> ${lembrete.descricao}</p>
+                    <button onclick="editarLembrete(${index})">Editar</button>
+                    <button onclick="excluirLembrete(${index})">Excluir</button>
+                `;
+                lembretesContainer.appendChild(lembreteDiv);
+            });
+        }
+
+        function limparFormulario() {
+            document.getElementById("titulo").value = "";
+            document.getElementById("dataInsercao").value = "";
+            document.getElementById("dataLimite").value = "";
+            document.getElementById("descricao").value = "";
+        }
+    </script>
+</body>
+</html>

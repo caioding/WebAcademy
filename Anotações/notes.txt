@@ -1,7 +1,29 @@
 https://stackoverflow.com/questions/44549733/how-to-use-visual-studio-code-as-the-default-editor-for-git-mergetool-including
 
-Comandos node:
-nvm install --lts (instala a versão mais recente)
-nvm use --lts (usa a versão)
+Comandos TS:
+npm i typescript -g -D ou 
+npm install typescript --save-dev ou 
+npm install -g typescript ou
+npm i -D typescript @types/express @types/node ts-node
 
-ver se vai
+npm i -g typescript -D @types/node ts-node
+npm init -y
+npx tsc --init
+
+
+1.	Lab1
+1.1.	Build
+1.1.1.	Index.html
+1.1.2.	js
+1.1.2.1.	index.js
+1.2.	src
+1.2.1.	index.ts
+
+Tema: Uso de tipos com TypeScript
+Objetivo: Criar uma pequena aplicação “Lembretes/To Do List”.
+Descrição:  O usuário deve ser capaz de criar/inserir, editar e apagar pequenos lembretes para realizar atividades pendentes. 
+Cada lembrete deve ter:
+Título
+Data e Hora de Inserção
+Data Limite para ser executada   
+Descrição da Tarefa ou atividade a ser feita 
