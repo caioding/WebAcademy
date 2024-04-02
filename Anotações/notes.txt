@@ -9,3 +9,7 @@ npm i -D typescript @types/express @types/node ts-node
 npm i -g typescript -D @types/node ts-node
 npm init -y
 npx tsc --init
+
+LEMBRETES:
+
+Se tiver "dt" no npmjs, deve colocar @types/
