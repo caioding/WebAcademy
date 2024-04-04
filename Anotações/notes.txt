@@ -1,5 +1,12 @@
 https://stackoverflow.com/questions/44549733/how-to-use-visual-studio-code-as-the-default-editor-for-git-mergetool-including
 
+Comandos Node:
+npm init -y
+npm install express
+npm i dotenv
+criar o arquivo .env
+npm install nodemon --save-dev
+
 Comandos TS:
 npm i typescript -g -D ou 
 npm install typescript --save-dev ou 
