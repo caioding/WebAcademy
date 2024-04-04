@@ -2,4 +2,5 @@ O primerio exercício de Express que não usa Typescript está na pasta "Express
 já todos os outros que tem Typescript estão na pasta "Express\ExpTS"
 
 No meu computador windows não foi possível instalar e importar o sass, na pasta "Anotações\erro_express.txt"
-contém o erro que apresenta.
+contém o erro que apresenta. Eu fiz exatamente conforme o CRUD feito pelo professor Davida na video aula,
+só não consegui testar do jeito que ele fez por conta do problema.
