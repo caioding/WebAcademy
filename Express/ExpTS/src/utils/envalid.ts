@@ -7,5 +7,5 @@ function envalid() {
     PORT: port(),
     FOLDER_LOGS: str(),
   });
-};
+}
 export default envalid;
