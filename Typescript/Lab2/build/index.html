@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Turma</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Gerenciador de Turma</h1>
+    <div>
+      <button class="button" onclick="exibirFormularioInserir()">Inserir Aluno</button>
+      <button class="button" onclick="exibirFormularioEditar()">Editar Aluno</button>
+      <button class="button" onclick="exibirFormularioRemover()">Remover Aluno</button>
+      <button class="button" onclick="exibirEstatisticas()">Estatísticas da Turma</button>
+    </div>
+    <div id="formulario-inserir" style="display: none;">
+      <h2>Inserir Aluno</h2>
+      <form id="formInserir">
+        <label for="id">ID:</label>
+        <input type="number" id="id" required>
+        <label for="nomeCompleto">Nome Completo:</label>
+        <input type="text" id="nomeCompleto" required>
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" required>
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" step="0.01" required>
+        <label for="peso">Peso:</label>
+        <input type="number" id="peso" step="0.01" required>
+        <button type="submit">Inserir</button>
+      </form>
+    </div>
+    <div id="formulario-editar" style="display: none;">
+      <h2>Editar Aluno</h2>
+      <form id="formEditar">
+        <label for="idEditar">ID:</label>
+        <input type="number" id="idEditar" required>
+        <label for="nomeCompletoEditar">Novo Nome Completo:</label>
+        <input type="text" id="nomeCompletoEditar" required>
+        <label for="idadeEditar">Nova Idade:</label>
+        <input type="number" id="idadeEditar" required>
+        <label for="alturaEditar">Nova Altura:</label>
+        <input type="number" id="alturaEditar" step="0.01" required>
+        <label for="pesoEditar">Novo Peso:</label>
+        <input type="number" id="pesoEditar" step="0.01" required>
+        <button type="submit">Editar</button>
+      </form>
+    </div>
+    <div id="formulario-remover" style="display: none;">
+      <h2>Remover Aluno</h2>
+      <form id="formRemover">
+        <label for="idRemover">ID:</label>
+        <input type="number" id="idRemover" required>
+        <button type="submit">Remover</button>
+      </form>
+    </div>
+    <div id="estatisticas" style="display: none;">
+      <h2>Estatísticas da Turma</h2>
+      <p>Número de Alunos: <span id="numAlunos">0</span></p>
+      <p>Média de Idades: <span id="mediaIdades">0</span></p>
+      <p>Média de Alturas: <span id="mediaAlturas">0</span></p>
+      <p>Média de Pesos: <span id="mediaPesos">0</span></p>
+    </div>
+  </div>
+
+  <script src="./js/classroom.js"></script>
+  <script src="./js/student.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
