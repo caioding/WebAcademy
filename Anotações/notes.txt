@@ -1,5 +1,8 @@
 https://stackoverflow.com/questions/44549733/how-to-use-visual-studio-code-as-the-default-editor-for-git-mergetool-including
 
+atualizar vscode ubuntu
+https://askubuntu.com/questions/833448/how-can-i-update-visual-studio-code-on-ubuntu
+
 Comandos Node:
 npm init -y
 npm install express
