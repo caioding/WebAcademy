@@ -1,0 +1,3 @@
+sudo docker
+sudo docker start webacad
+docker ps
