@@ -1,16 +1,17 @@
 {
+  "dependencies": {
+    "tsc-alias": "^1.8.8"
+  },
   "name": "lab2",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile" : "tsc && tsc-alias"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@types/readline-sync": "^1.4.8",
-    "readline-sync": "^1.4.10"
-  }
+  "description": ""
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Turma de Educação Física</title>
+    <link rel="stylesheet" href="/Typescript/Lab2/dist/styels.css">
+    <script type="module" src="/Typescript/Lab2/dist/js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Turma de Educação Física</h1>
+        <form id="form-aluno">
+            <h2>Adicionar Aluno</h2>
+            <input type="number" id="id" placeholder="ID" required>
+            <input type="text" id="nomeCompleto" placeholder="Nome Completo" required>
+            <input type="number" id="idade" placeholder="Idade" required>
+            <input type="number" id="altura" placeholder="Altura" required>
+            <input type="number" id="peso" placeholder="Peso" required>
+            <button type="submit">Adicionar Aluno</button>
+        </form>
+        <form id="form-editar-aluno" style="display: none;">
+            <h2>Editar Aluno</h2>
+            <input type="number" id="editar-id" placeholder="ID" required disabled>
+            <input type="text" id="editar-nomeCompleto" placeholder="Nome Completo" required>
+            <input type="number" id="editar-idade" placeholder="Idade" required>
+            <input type="number" id="editar-altura" placeholder="Altura" required>
+            <input type="number" id="editar-peso" placeholder="Peso" required>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+        <div id="stats">
+            <p id="num-alunos">Número de Alunos: 0</p>
+            <p id="media-idades">Média de Idades: 0</p>
+            <p id="media-alturas">Média de Alturas: 0</p>
+            <p id="media-pesos">Média de Pesos: 0</p>
+        </div>
+        <div id="lista-alunos"></div>
+    </div>
+</body>
+</html>
