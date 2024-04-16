@@ -1,4 +1,3 @@
-// Celular.ts
 import { IProduto } from './Carrinho';
 
 export class Celular implements IProduto {

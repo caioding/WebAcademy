@@ -1,4 +1,3 @@
-// Bicicleta.ts
 import { IProduto } from './Carrinho';
 
 export class Bicicleta implements IProduto {
