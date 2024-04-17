@@ -23,3 +23,10 @@ npx tsc --init
 LEMBRETES:
 
 Se tiver "dt" no npmjs, deve colocar @types/
+
+npm ci // clean install - instala sem fazer nenhuma atualização de pacote
+
+docker run --name loja_db_3 -p5506:3306 -e MYSQL_DATABASE=loj
+a -e MYSQL_ROOT_PASSWORD=senha123 -d mysql:8.0
+
+mysql -uroot -psenha123 -P5506 -h127.0.0.1 loja
