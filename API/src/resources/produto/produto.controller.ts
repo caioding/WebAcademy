@@ -1,32 +1,67 @@
 import { Request, Response } from "express"
 import { ReasonPhrases, StatusCodes } from "http-status-codes"
-import { createProdutoDto } from "./produto.types"
-import { checkNomeIsAvaliable, createProduto, listProdutos } from "./produto.service"
-
+import { UpdateProdutoDto, CreateProdutoDto } from "./produto.types"
+import { checkNomeIsAvaliable, createProduto, listProdutos, readProduto, updateProduto, deleteProduto } from "./produto.service"
 
 const index = async (req: Request, res: Response) => {
-    try{
-        const produtos = await listProdutos();
+    const skip = req.query.skip ? parseInt(req.query.skip?.toString()) : undefined;
+    const take = req.query.take ? parseInt(req.query.take?.toString()) : undefined;
+    try {
+        const produtos = await listProdutos(skip, take);
         res.status(StatusCodes.OK).json(produtos)
-    } catch(err){
+    } catch (err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
     }
 }
 const create = async (req: Request, res: Response) => {
-    const produto = req.body as createProdutoDto;
+    const produto = req.body as CreateProdutoDto;
     try {
-        if(await checkNomeIsAvaliable(produto.nome)){
-        const novoProduto = await createProduto(produto)
-        res.status(StatusCodes.CREATED).json(novoProduto)
-        }else{
+        if (await checkNomeIsAvaliable(produto.nome)) {
+            const novoProduto = await createProduto(produto)
+            res.status(StatusCodes.CREATED).json(novoProduto)
+        } else {
             res.status(StatusCodes.CONFLICT).json({ reason: ReasonPhrases.CONFLICT }) // Added a comma after the object key
         }
-    } catch(err){
+    } catch (err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
     }
 }
-const read = async (req: Request, res: Response) => {}
-const update = async (req: Request, res: Response) => {}
-const remove = async (req: Request, res: Response) => {}
+const read = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+        const produto = await readProduto(id)
+        if (produto) {
+            res.status(StatusCodes.OK).json(produto)
+        } else {
+            res.status(StatusCodes.NOT_FOUND).json({ reason: ReasonPhrases.NOT_FOUND })
+        }
+    } catch (err) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
+    }
+}
 
-export default { index, create, read, update, remove}
+const update = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const produto = req.body as UpdateProdutoDto;
+    try {
+        if (await checkNomeIsAvaliable(produto.nome, id)) {
+            const updatedProduto = await updateProduto(id, produto)
+            res.status(StatusCodes.NO_CONTENT).json()
+        } else {
+            res.status(StatusCodes.CONFLICT).json({ reason: ReasonPhrases.CONFLICT })
+        }
+    } catch (err) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
+    }
+}
+const remove = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+        const deletedProduto = await deleteProduto(id)
+        res.status(StatusCodes.NO_CONTENT).json(deletedProduto)
+    } catch (err) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
+    }
+}
+
+export default { index, create, read, update, remove }

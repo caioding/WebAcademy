@@ -32,3 +32,6 @@ a -e MYSQL_ROOT_PASSWORD=senha123 -d mysql:8.0
 mysql -uroot -psenha123 -P5506 -h127.0.0.1 loja
 
 npx prisma migrate dev --name create-produto-table
+
+aula2: npx prisma migrate dev --name update-preco-column
+
