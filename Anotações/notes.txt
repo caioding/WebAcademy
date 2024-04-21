@@ -35,3 +35,7 @@ npx prisma migrate dev --name create-produto-table
 
 aula2: npx prisma migrate dev --name update-preco-column
 
+
+WSL
+wls -l -v
+lsb_release -a
