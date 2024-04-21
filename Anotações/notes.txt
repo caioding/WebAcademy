@@ -1,27 +1,3 @@
-https://stackoverflow.com/questions/44549733/how-to-use-visual-studio-code-as-the-default-editor-for-git-mergetool-including
-
-atualizar vscode ubuntu
-https://askubuntu.com/questions/833448/how-can-i-update-visual-studio-code-on-ubuntu
-
-Comandos Node:
-npm init -y
-npm install express
-npm i dotenv
-criar o arquivo .env
-npm install nodemon --save-dev
-
-Comandos TS:
-npm i typescript -g -D ou 
-npm install typescript --save-dev ou 
-npm install -g typescript ou
-npm i -D typescript @types/express @types/node ts-node
-
-npm i -g typescript -D @types/node ts-node
-npm init -y
-npx tsc --init
-
-LEMBRETES:
-
 Se tiver "dt" no npmjs, deve colocar @types/
 
 npm ci // clean install - instala sem fazer nenhuma atualização de pacote
@@ -31,11 +7,4 @@ a -e MYSQL_ROOT_PASSWORD=senha123 -d mysql:8.0
 
 mysql -uroot -psenha123 -P5506 -h127.0.0.1 loja
 
-npx prisma migrate dev --name create-produto-table
-
 aula2: npx prisma migrate dev --name update-preco-column
-
-
-WSL
-wls -l -v
-lsb_release -a
