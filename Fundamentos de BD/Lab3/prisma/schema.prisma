@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id         Int        @id @default(autoincrement())
+  nome       String
+  cpf        String     @unique
+  celular    String
+  email      String     @unique
+  nascimento DateTime
+  enderecos  Endereco[]
+  compras    Compra[]
+}
+
+model Endereco {
+  id        Int      @id @default(autoincrement())
+  endereco  String
+  clienteId Int
+  cliente   Cliente  @relation(fields: [clienteId], references: [id])
+  compras   Compra[]
+}
+
+model Categoria {
+  id            Int            @id @default(autoincrement())
+  nome          String
+  subcategorias Subcategoria[]
+}
+
+model Subcategoria {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  categoriaId Int
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  produtos    Produto[]
+}
+
+model Produto {
+  id             Int           @id @default(autoincrement())
+  modelo         String
+  fabricante     String
+  preco          Float
+  quantidade     Int
+  subcategoriaId Int
+  subcategoria   Subcategoria  @relation(fields: [subcategoriaId], references: [id])
+  numerosSerie   NumeroSerie[]
+  comprados      ItemCompra[]
+}
+
+model NumeroSerie {
+  id        Int     @id @default(autoincrement())
+  numero    String
+  produtoId Int
+  produto   Produto @relation(fields: [produtoId], references: [id])
+}
+
+model Compra {
+  id                Int          @id @default(autoincrement())
+  ts                DateTime
+  desconto          Float
+  formaPagamento    String
+  totalCompra       Float
+  clienteId         Int
+  cliente           Cliente      @relation(fields: [clienteId], references: [id])
+  enderecoEnvioId   Int
+  enderecoEnvio     Endereco     @relation(fields: [enderecoEnvioId], references: [id])
+  produtosComprados ItemCompra[]
+}
+
+model ItemCompra {
+  id        Int     @id @default(autoincrement())
+  compraId  Int
+  compra    Compra  @relation(fields: [compraId], references: [id])
+  produtoId Int
+  produto   Produto @relation(fields: [produtoId], references: [id])
+}
