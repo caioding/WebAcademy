@@ -6,7 +6,9 @@ docker run --name loja_db_3 -p5506:3306 -e MYSQL_DATABASE=loj
 a -e MYSQL_ROOT_PASSWORD=senha123 -d mysql:8.0
 
 mysql -uroot -psenha123 -P5506 -h127.0.0.1 loja
-"mysql://root:senha321@127.0.0.1:3306/webacad"
+
+DATABASE_URL="mysql://root:senha321@127.0.0.1:3306/webacad"
+npx prisma migrate dev --name update
 
 aula2: npx prisma migrate dev --name update-preco-column
 
