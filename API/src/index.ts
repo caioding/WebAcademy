@@ -4,7 +4,6 @@ import cookieParser from "cookie-parser";
 
 import validateEnv from "./utils/validateEnv";
 import router from "./router";
-import  nextTick  from "process";
 import setLangCookie from "./middlewares/setLangCookie";
 
 dotenv.config();
@@ -19,5 +18,5 @@ app.use(express.json());
 app.use(router);
 
 app.listen(PORT, () => {
-  console.log(`serve em ${PORT}`);
+  console.log(`serve em http://localhost:${PORT}`);
 });
