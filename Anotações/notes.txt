@@ -16,3 +16,20 @@ npm init -y
 npm i --save-dev prisma typescript ts-node @types/node nodemon
 npx prisma init
 npx prisma migrate dev --name update
+
+------------
+
+DATABASE_URL="mysql://root:senha123@localhost:4406/loja"
+
+
+DATABASE_URL="mysql://webdb:webacademy@172.17.0.2:3306/prismadb"
+
+-------------
+docker ps
+docker ps -a
+docker rm xconteiner
+docker rmi ximage
+docker stop nome_ou_id_do_conteiner -t=0
+
+docker -d run --name srvhttp nginx (mudar o nome e liberar o terminal)
+docker run xconteiner --force (stopa e apaga o conteiner)
