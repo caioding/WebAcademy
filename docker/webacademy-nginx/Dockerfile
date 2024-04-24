@@ -3,7 +3,7 @@ FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install -y nginx
 
-COPY default /etc/nginx/sites-available/default
+COPY default.conf /etc/nginx/sites-available/default
 COPY index.html /usr/share/nginx/html
 
 EXPOSE 7000
