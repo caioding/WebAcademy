@@ -6,6 +6,11 @@ import validateEnv from "./utils/validateEnv";
 import router from "./router";
 import setLangCookie from "./middlewares/setLangCookie";
 
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger-output.json";
+...
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
 dotenv.config();
 validateEnv();
 
@@ -20,3 +25,6 @@ app.use(router);
 app.listen(PORT, () => {
   console.log(`serve em http://localhost:${PORT}`);
 });
+
+
+declare module 'express' {
