@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { TiposUsuaios } from "../../resources/tipoUsuario/tipoUsuario.model";
+import { TiposUsuaios } from "../resources/tipoUsuario/tipoUsuario.model";
 
 export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
     if (req.session.tipoUsuario === TiposUsuaios.ADMIN) next();
