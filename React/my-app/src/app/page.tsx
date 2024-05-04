@@ -11,9 +11,8 @@ export default function Produtos() {
     <>
       <main>
         <div className="container p-5">
-
-        <ResumoCarrinho />
-        <ListagemProdutos />
+          <ResumoCarrinho />
+          <ListagemProdutos />
         </div>
       </main>
     </>
