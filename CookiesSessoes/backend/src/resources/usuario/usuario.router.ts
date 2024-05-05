@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import produtoController from '../produto/produto.controller';
 import usuarioController from './usuario.controller';
+import isAdmin from '../../middlewares/isAdmin';
 
 const router = Router();
 
-router.get("/", usuarioController.index);
+router.get("/", isAdmin, usuarioController.index);
 router.post("/", usuarioController.create);
-router.get("/:id", usuarioController.read);
+router.get("/:id", isAdmin, usuarioController.read);
 router.put("/:id", usuarioController.update);
-router.delete("/:id", usuarioController.remove);
+router.delete("/:id", isAdmin, usuarioController.remove);
 
 export default router;

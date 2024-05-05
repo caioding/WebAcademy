@@ -1,25 +1,23 @@
-import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
+import { PrismaClient, Usuario } from "@prisma/client";
 import { LoginDto } from "./auth.types";
-import { UsuarioDto } from "../usuario/usuario.types";
-import { compare } from "bcryptjs";
+import { TiposUsuarios } from "../tipoUsuario/tipoUsuario.constants";
 
 const prisma = new PrismaClient();
 
 export const checkCredentials = async (
-  credentials: LoginDto
-): Promise<UsuarioDto | null> => {
-  const usuario = await prisma.usuario.findUnique({
-    where: { email: credentials.email },
-  });
+  credenciais: LoginDto
+): Promise<Usuario | null> => {
+  const { email, senha } = credenciais;
+  const usuario = await prisma.usuario.findUnique({ where: { email } });
   if (!usuario) return null;
-  const ok = await compare(credentials.senha, usuario.senha);
-  if (!ok) return null;
-  return {
-    id: usuario.id,
-    nome: usuario.nome,
-    email: usuario.email,
-    tipoUsuarioId: usuario.tipoUsuarioId,
-    createAd: usuario.createAd,
-    updateAt: usuario.updateAt,
-  };
+  const ok = await bcrypt.compare(senha, usuario.senha);
+  return ok ? usuario : null;
+};
+
+export const checkIsAdmin = async (id: string): Promise<boolean> => {
+  const usuario = await prisma.usuario.findUnique({ where: { id } });
+  if (!usuario) return false;
+  console.log(usuario.tipoUsuarioId, TiposUsuarios.ADMIN);
+  return usuario.tipoUsuarioId === TiposUsuarios.ADMIN;
 };

@@ -14,6 +14,16 @@ const index = async (req: Request, res: Response) => {
     }
 }
 const create = async (req: Request, res: Response) => {
+    /*
+#swagger.summary = 'Adiciona um novo produto na base.'
+#swagger.parameters['body'] = {
+in: 'body',
+schema: { $ref: '#/definitions/CreateProduto' }
+} 
+#swagger.responses[200] = {
+schema: { $ref: '#/definitions/Produto' }
+} 
+*/
     const produto = req.body as CreateProdutoDto;
     try {
         if (await checkNomeIsAvaliable(produto.nome)) {
@@ -27,6 +37,14 @@ const create = async (req: Request, res: Response) => {
     }
 }
 const read = async (req: Request, res: Response) => {
+    /*
+ #swagger.summary = 'Adiciona um novo produto na base.'
+ #swagger.parameters['body'] = {
+ in: 'body',
+ schema: { $ref: '#/definitions/CreateProduto' }
+ } 
+ #swa
+ */
     const { id } = req.params;
     try {
         const produto = await readProduto(id)

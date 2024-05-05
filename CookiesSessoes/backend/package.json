@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon --watch src src/index.ts",
+    "start:anterior": "npx nodemon --watch src src/index.ts",
+    "start": "nodemon -e js,json,ts,yaml src/index.ts",
     "build": "npx tsc",
     "start:prod": "node build/index.js",
     "migrate": "docker exec backend_loja npx prisma migrate dev",

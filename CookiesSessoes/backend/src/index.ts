@@ -8,10 +8,8 @@ import validateEnv from "./utils/validateEnv";
 import router from "./router";
 import setLangCookie from "./middlewares/setLangCookie";
 
-// import swaggerUi from "swagger-ui-express";
-// import swaggerFile from "./swagger-output.json";
-// ...
-// app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger-output.json";
 
 dotenv.config();
 validateEnv();
@@ -26,6 +24,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(setLangCookie);
 app.use(express.json());
 app.use(router);
