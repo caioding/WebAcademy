@@ -5,39 +5,3 @@ DATABASE_URL="mysql://root:senha123@localhost:4406/loja"
 DATABASE_URL="mysql://webdb:webacademy@172.17.0.2:3306/prismadb"
 
 DATABASE_URL="mysql://webdb:senha123@172.17.0.2:3306/prismaloja" #funcionando
-
---------
-
-PRISMA
-npm init -y
-npm i --save-dev prisma typescript ts-node @types/node nodemon
-npx prisma init
-npx prisma migrate dev --name update
-
-------------
-
-docker ps
-docker ps -a
-docker rm xconteiner
-docker rmi ximage
-docker stop nome_ou_id_do_conteiner -t=0
-
-docker -d run --name srvhttp nginx (mudar o nome e liberar o terminal)
-docker run xconteiner --force (stopa e apaga o conteiner)
-
-------------------
-cookies
-
-docker build -t backend_loja .
-docker run -v /home/caio/WebAcademy/CookiesSessoes/backend/src:/app/src/ -p4466:4466 -d backend_loja
-id: 7d54fefdfe3bfa75c7ff774850e266cd226f256e912c559606a3b9d614bad208
-
-docker build -t frontend_loja .
-docker run -v /home/caio/WebAcademy/CookiesSessoes/frontend/src:/app/src/ -p4477:4477 -d frontend_loja
-
-sudo lsof -i :4466
-
-como era o mapeamento:
-    volumes:
-      - ./frontend/src:/app/src
-
