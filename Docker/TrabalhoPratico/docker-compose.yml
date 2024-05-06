@@ -1,34 +1,60 @@
 version: "3.8"
 services:
-  backend:
-    container_name: backend_loja
-    build: 
-      context: ./backend
-    volumes:
-      - ./backend:/app
+  backend_livros:
+    container_name: backend_livros
+    build: ./backend
     ports:
-      - ${BACKEND_PORT}:${BACKEND_PORT}
-  frontend:
-    container_name: frontend_loja
-    build: 
-      context: ./frontend
+      - 4444:4444
+    env_file:
+      - ./backend/.env
+    networks:
+      - livros
     volumes:
-      - ./frontend:/app
+      - volume_logs:/app/log
+    depends_on:
+      - mysql
+  frontend_livros:
+    container_name: frontend_livros
+    build: ./frontend
     ports:
-      - ${FRONTEND_PORT}:${FRONTEND_PORT}
-  db:
-    container_name: db_loja
-    image: mysql:8.0.36
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - mysql_config:/etc/mysql
+      - 8000:80
+    env_file:
+      - ./frontend/.env
+    networks:
+      - livros
+    depends_on:
+      - backend_livros
+  mysql:
+    image: mysql:latest
+    container_name: mysql_livros
     ports:
-      - ${MYSQL_PORT}:3306
+      - 3306:3306
+      - 33060:33060
     environment:
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=webacad
+    networks:
+      - livros
+    volumes:
+      - volume_mysql:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: php_livros
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PORT=3306
+      - PMA_PASSWORD=webacad
+    networks:
+      - livros
+    depends_on:
+      - mysql
+
+networks:
+  livros:
+    driver: bridge
 
 volumes:
-  mysql_data:
-  mysql_config:
+  volume_mysql:
+  volume_logs:
