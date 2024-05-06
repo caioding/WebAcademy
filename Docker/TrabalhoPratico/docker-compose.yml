@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  backend_livros:
+    container_name: backend_livros
+    build: ./backend
+    ports:
+      - 4444:4444
+    env_file:
+      - ./backend/.env
+    networks:
+      - livros
+    volumes:
+      - volume_logs:/app/log
+    depends_on:
+      - mysql
+  frontend_livros:
+    container_name: frontend_livros
+    build: ./frontend
+    ports:
+      - 8000:80
+    env_file:
+      - ./frontend/.env
+    networks:
+      - livros
+    depends_on:
+      - backend_livros
+  mysql:
+    image: mysql:latest
+    container_name: mysql_livros
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      - MYSQL_ROOT_PASSWORD=webacad
+    networks:
+      - livros
+    volumes:
+      - volume_mysql:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: php_livros
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PORT=3306
+      - PMA_PASSWORD=webacad
+    networks:
+      - livros
+    depends_on:
+      - mysql
+
+networks:
+  livros:
+    driver: bridge
+
+volumes:
+  volume_mysql:
+  volume_logs:
