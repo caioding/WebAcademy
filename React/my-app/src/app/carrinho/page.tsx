@@ -2,7 +2,7 @@
 import React from "react";
 
 import Navbar from "../components/navbar";
-import ListagemCarrinho from "../components/ListagemCarrinho";
+import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
 import ResumoCarrinho from "../components/ResumoCarrinho";
 
 export default function Carrinho() {
