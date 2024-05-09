@@ -1,28 +1,43 @@
-import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const CardProduto = () => {
+interface CardProdutoProps {
+  produto: Produto;
+  adicionarAoCarrinho: (produto: Produto) => void;
+}
+
+export default function CardProduto({
+  produto,
+  adicionarAoCarrinho,
+}: CardProdutoProps) {
+  const router = useRouter();
+
+  const verDetalhesProduto = (nome: string) => {
+    router.push(`/produto/${nome}`);
+  };
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
         <Image
-          src="/placeholder.png"
+          src={produto.fotos[0].src}
           className="card-img-top"
-          alt="imagem placeholder"
+          alt={produto.fotos[0].titulo}
           width={300}
           height={320}
         />
 
         <div className="card-body bg-light">
-          <h5 className="card-title">Notebook 1</h5>
-          <p className="card-text text-secondary">R$ 1500</p>
-          <button className="btn btn-dark d-block w-100" type="button">
+          <h5 className="card-title">{produto.nome}</h5>
+          <p className="card-text text-secondary">R$ {produto.preco}</p>
+          <button
+            className="btn btn-dark d-block w-100"
+            type="button"
+            onClick={() => adicionarAoCarrinho(produto)}
+          >
             Adicionar no carrinho
           </button>
         </div>
       </div>
     </div>
   );
-};
-
-export default CardProduto;
+}

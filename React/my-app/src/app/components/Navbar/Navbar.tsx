@@ -1,9 +1,10 @@
 "use client";
+
 import React from "react";
 
 import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+export default function Navbar() {
   const pathname = usePathname();
 
   if (pathname === "/login" || pathname === "/cadastro") {
@@ -47,5 +48,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;

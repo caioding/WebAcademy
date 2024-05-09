@@ -1,28 +1,43 @@
 "use client";
-import Image from "next/image";
-import { Produto } from "@/types/produto";
-import React, { useEffect, useState } from "react";
 
-import Navbar from "./components/navbar";
-import ResumoCarrinho from "./components/ResumoCarrinho";
-import ListagemProdutos from "./components/ListagemProdutos";
+import { useState, useEffect } from "react";
+import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
+import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
 
-export default function Produtos() {
+export default function App() {
   const [produtos, setProdutos] = useState<Produto[] | null>(null);
+  const [quantidadeTotalItens, setQuantidadeTotalItens] = useState<number>(0);
+  const [precoTotal, setPrecoTotal] = useState<number>(0);
 
   useEffect(() => {
-    fetch("https://ranekapi.origamid.dev/json/api/produto")
-      .then((response) => response.json())
-      .then((json) => setProdutos(json));
+    fetch('https://ranekapi.origamid.dev/json/api/produto')
+      .then(response => response.json())
+      .then(data => setProdutos(data))
+      .catch(error => console.error('Error:', error));
   }, []);
+
+  const adicionarAoCarrinho = (produto: Produto) => {
+    setQuantidadeTotalItens(quantidadeTotalItens + 1);
+    setPrecoTotal(precoTotal + Number(produto.preco));
+  };
+
   return (
-    <>
-      <main>
-        <div className="container p-5">
-          <ResumoCarrinho />
-          <ListagemProdutos />
-        </div>
-      </main>
-    </>
+    <main>
+      <div className="container p-5">
+        <ResumoCarrinho
+          quantidadeItensTotal={quantidadeTotalItens}
+          precoTotal={precoTotal}
+        />
+
+        {produtos ? (
+          <ListagemProdutos
+            produtos={produtos}
+            adicionarAoCarrinho={adicionarAoCarrinho}
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </main>
   );
 }

@@ -1,8 +1,14 @@
-import React from "react";
-
 import ItemCarrinho from "../ItemCarrinho/ItemCarrinho";
 
-const ListagemCarrinho = () => {
+interface ListagemCarrinhoProps {
+  itensCarrinho: ItemCarrinho[];
+  removerItemDoCarrinho: (id: string) => void;
+}
+
+export default function ListagemCarrinho({
+  itensCarrinho,
+  removerItemDoCarrinho,
+}: ListagemCarrinhoProps) {
   return (
     <div>
       <div className="card mb-4">
@@ -20,9 +26,13 @@ const ListagemCarrinho = () => {
                 </tr>
               </thead>
               <tbody>
-                <ItemCarrinho />
-                <ItemCarrinho />
-                <ItemCarrinho />
+                {itensCarrinho.map((item) => (
+                  <ItemCarrinho
+                    key={item.id}
+                    item={item}
+                    removerItemDoCarrinho={removerItemDoCarrinho}
+                  />
+                ))}
               </tbody>
             </table>
           </div>
@@ -30,6 +40,4 @@ const ListagemCarrinho = () => {
       </div>
     </div>
   );
-};
-
-export default ListagemCarrinho;
+}
