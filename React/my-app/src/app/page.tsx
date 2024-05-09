@@ -1,20 +1,33 @@
 "use client";
-import Image from "next/image";
-import React from "react";
 
-import Navbar from "./components/navbar";
-import ResumoCarrinho from "./components/ResumoCarrinho";
-import ListagemProdutos from "./components/ListagemProdutos";
+import { useState } from "react";
+import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
+import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
+import { mockProdutos } from "./mocks/produtos";
 
-export default function Produtos() {
+export default function App() {
+  const produtos = mockProdutos;
+  const [quantidadeTotalItens, setQuantidadeTotalItens] = useState<number>(0);
+  const [precoTotal, setPrecoTotal] = useState<number>(0);
+
+  const adicionarAoCarrinho = (produto: Produto) => {
+    setQuantidadeTotalItens(quantidadeTotalItens + 1);
+    setPrecoTotal(precoTotal + Number(produto.preco));
+  };
+
   return (
-    <>
-      <main>
-        <div className="container p-5">
-          <ResumoCarrinho />
-          <ListagemProdutos />
-        </div>
-      </main>
-    </>
+    <main>
+      <div className="container p-5">
+        <ResumoCarrinho
+          quantidadeItensTotal={quantidadeTotalItens}
+          precoTotal={precoTotal}
+        />
+
+        <ListagemProdutos
+          produtos={produtos}
+          adicionarAoCarrinho={adicionarAoCarrinho}
+        />
+      </div>
+    </main>
   );
 }
