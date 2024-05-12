@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 interface CardProdutoProps {
   produto: Produto;
@@ -10,11 +9,6 @@ export default function CardProduto({
   produto,
   adicionarAoCarrinho,
 }: CardProdutoProps) {
-  const router = useRouter();
-
-  const verDetalhesProduto = (nome: string) => {
-    router.push(`/produto/${nome}`);
-  };
   return (
     <div className="col">
       <div className="card shadow-sm h-100">

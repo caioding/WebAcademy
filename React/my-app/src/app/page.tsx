@@ -1,20 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
 import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
+import { mockProdutos } from "./mocks/produtos";
 
 export default function App() {
-  const [produtos, setProdutos] = useState<Produto[] | null>(null);
+  const produtos = mockProdutos;
   const [quantidadeTotalItens, setQuantidadeTotalItens] = useState<number>(0);
   const [precoTotal, setPrecoTotal] = useState<number>(0);
-
-  useEffect(() => {
-    fetch('https://ranekapi.origamid.dev/json/api/produto')
-      .then(response => response.json())
-      .then(data => setProdutos(data))
-      .catch(error => console.error('Error:', error));
-  }, []);
 
   const adicionarAoCarrinho = (produto: Produto) => {
     setQuantidadeTotalItens(quantidadeTotalItens + 1);

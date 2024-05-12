@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import ResumoCarrinho from "../components/ResumoCarrinho/ResumoCarrinho";
 import { mockItensCarrinho } from "../mocks/itensCarrinho";
 import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
