@@ -1,6 +1,0 @@
-node_modules
-.env
-!logs
-!logs/.gitkeep
-logs/*
-build/*
