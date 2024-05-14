@@ -27,26 +27,34 @@ export default function Produto() {
               <h5 className="card-title mb-4 fw-bold">{produto.nome}</h5>
 
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
-                <Image
-                  src={produto.fotos[0].src}
-                  className="card-img-top"
-                  alt={produto.fotos[0].titulo}
-                  width={300}
-                  height={320}
-                />
+                {produto.fotos.map((foto) => (
+                  <div className="col" key={foto.titulo}>
+                    <Image
+                      src={foto.src}
+                      className="card-img-top"
+                      alt={foto.titulo}
+                      width={300}
+                      height={320}
+                    />
+                  </div>
+                ))}
               </div>
 
               <p className="card-text fw-medium">
-                Valor: R${Number(2000).toFixed(2)}
+                Valor: R${Number(produto.preco).toFixed(2)}
               </p>
-              <p className="card-text fw-medium">{produto.descricao} </p>
-              <p className="card-text fw-medium">{produto.usuario_id} </p>
+              <p className="card-text fw-medium">
+                Descrição: {produto.descricao}{" "}
+              </p>
+              <p className="card-text fw-medium">
+                Anunciado por:{produto.usuario_id}{" "}
+              </p>
 
               <h5 className="card-title mb-4 fw-bold"></h5>
             </div>
           </div>
         ) : (
-          <p>Loading...</p>
+          <p>Carregando...</p>
         )}
       </div>
     </main>

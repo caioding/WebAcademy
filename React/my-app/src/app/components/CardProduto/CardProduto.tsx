@@ -12,8 +12,8 @@ export default function CardProduto({
 }: CardProdutoProps) {
   const router = useRouter();
 
-  const verDetalhesProduto = (nome: string) => {
-    router.push(`/produto/${nome}`);
+  const verDetalhesProduto = (id: string) => {
+    router.push(`/produto/${id}`);
   };
   return (
     <div className="col">
@@ -39,7 +39,7 @@ export default function CardProduto({
           <button 
           className="btn btn-light d-block w-100 mt-2" 
           type="button"
-          onClick={() => verDetalhesProduto(produto.nome)}
+          onClick={() => verDetalhesProduto(produto.id)}
           >
             Ver detalhes
           </button>
