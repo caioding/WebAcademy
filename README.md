@@ -1,1 +1,1 @@
-"Trabalho Prático 1 de React" 
+"Trabalho Práticos 1 e 2 de React" 
