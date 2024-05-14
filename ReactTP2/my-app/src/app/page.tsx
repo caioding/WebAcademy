@@ -35,7 +35,7 @@ export default function App() {
             adicionarAoCarrinho={adicionarAoCarrinho}
           />
         ) : (
-          <p>Loading...</p>
+          <p>Carregando...</p>
         )}
       </div>
     </main>

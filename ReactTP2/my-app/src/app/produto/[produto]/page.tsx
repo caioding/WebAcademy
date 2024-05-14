@@ -11,11 +11,6 @@ export default function Produto() {
   const nomeProduto = params.produto as string;
 
   useEffect(() => {
-    // fetch(`https://ranekapi.origamid.dev/json/api/produto/${nomeProduto}`)
-    //   .then((response) => response.json())
-    //   .then((data) => setProduto(data))
-    //   .catch((error) => console.error("Error:", error));
-
     api.get(`/produto/${params.produto}`).then((response) => {
       setProduto(response.data);
     });
