@@ -11,9 +11,17 @@ export default function Produto() {
   const nomeProduto = params.produto as string;
 
   useEffect(() => {
-    api.get(`/produto/${params.produto}`).then((response) => {
-      setProduto(response.data);
-    });
+    console.log(`params.produto: ${params.produto}`);
+    console.log(`Request URL: /produto/${params.produto}`);
+
+    api
+      .get(`/produto/${params.produto}`)
+      .then((response) => {
+        setProduto(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [params.produto]);
 
   return (
