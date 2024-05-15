@@ -10,10 +10,10 @@ export default function App() {
   const [precoTotal, setPrecoTotal] = useState<number>(0);
 
   useEffect(() => {
-    fetch('https://ranekapi.origamid.dev/json/api/produto')
-      .then(response => response.json())
-      .then(data => setProdutos(data))
-      .catch(error => console.error('Error:', error));
+    fetch("https://ranekapi.origamid.dev/json/api/produto")
+      .then((response) => response.json())
+      .then((data) => setProdutos(data))
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   const adicionarAoCarrinho = (produto: Produto) => {
@@ -35,7 +35,7 @@ export default function App() {
             adicionarAoCarrinho={adicionarAoCarrinho}
           />
         ) : (
-          <p>Loading...</p>
+          <p>Carregando...</p>
         )}
       </div>
     </main>

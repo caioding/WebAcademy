@@ -1,5 +1,6 @@
 "use client";
 
+import api from "@/app/services/api";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,11 +11,18 @@ export default function Produto() {
   const nomeProduto = params.produto as string;
 
   useEffect(() => {
-    fetch(`https://ranekapi.origamid.dev/json/api/produto/${nomeProduto}`)
-      .then((response) => response.json())
-      .then((data) => setProduto(data))
-      .catch((error) => console.error("Error:", error));
-  }, [nomeProduto]);
+    console.log(`params.produto: ${params.produto}`);
+    console.log(`Request URL: /produto/${params.produto}`);
+
+    api
+      .get(`/produto/${params.produto}`)
+      .then((response) => {
+        setProduto(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [params.produto]);
 
   return (
     <main>

@@ -16,11 +16,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        {" "}
-        <Navbar />
-        {children}
-        <BootstrapClient />
-        {/* <ReactQueryClientProvider /> */}
+        <ReactQueryClientProvider>
+          <Navbar />
+          {children}
+          <BootstrapClient />
+        </ReactQueryClientProvider>
       </body>
     </html>
   );
