@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <Navbar />
-        {children}
-        <BootstrapClient />
+          <Navbar />
+          {children}
+          <BootstrapClient />
       </body>
     </html>
   );

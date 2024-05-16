@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CardProduto from "../CardProduto/CardProduto";
 import ResumoFavoritos from "../ResumoFavoritos/ResumoFavoritos";
-import { FavoritosContext } from "@/app/page";
+import { FavoritosContext } from "@/app/FavoritosContext";
 
 interface IListagemProdutos {
   produtos: Produto[];

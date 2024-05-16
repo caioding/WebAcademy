@@ -3,16 +3,7 @@
 import React, { createContext, useState } from "react";
 import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
 import { mockProdutos } from "./mocks/produtos";
-
-interface IFavoritosContext {
-  favoritos: Produto[];
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
-}
-
-export const FavoritosContext = createContext<IFavoritosContext>({
-  favoritos: [],
-  setFavoritos: () => {},
-});
+import { FavoritosContext } from "./FavoritosContext";
 
 export default function App() {
   const produtos = mockProdutos;
