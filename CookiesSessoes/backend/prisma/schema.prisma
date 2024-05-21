@@ -16,6 +16,7 @@ model Produto {
   estoque  Int      @db.Int()
   createAd DateTime @default(now()) @map("created_at")
   updateAt DateTime @updatedAt @map("updated_at")
+  comprasProduto CompraProduto[]
 
   @@map("produtos")
 }
@@ -29,6 +30,7 @@ model Usuario {
   tipoUsuarioId String      @db.Char(36)
   createAd      DateTime    @default(now()) @map("created_at")
   updateAt      DateTime    @updatedAt @map("updated_at")
+  compras       Compra[]
 
   @@map("usuarios")
 }
@@ -39,6 +41,30 @@ model TipoUsuario {
   usuario Usuario[]
 
   @@map("tipos_usuarios")
+}
+
+model Compra {
+  id             String          @id @default(uuid()) @db.Char(40)
+  usuario        Usuario         @relation(fields: [usuarioId], references: [id])
+  usuarioId      String          @db.Char(40)
+  createdAt      DateTime        @default(now()) @map("created_at")
+  updatedAt      DateTime        @updatedAt @map("updated_at")
+  comprasProduto CompraProduto[]
+
+  @@map("compras")
+}
+
+model CompraProduto {
+  id         String   @id @default(uuid()) @db.Char(40)
+  compra     Compra   @relation(fields: [compraId], references: [id])
+  compraId   String   @db.Char(40)
+  produto    Produto  @relation(fields: [produtoId], references: [id])
+  produtoId  String   @db.Char(40)
+  quantidade Int      @db.Int
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("compras_produtos")
 }
 
 datasource db {
