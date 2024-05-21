@@ -12,5 +12,5 @@ export function useProdutosFavoritos() {
 
 export function useVerificaProdutoFavorito(id: string) {
   const { favoritos } = useContext(FavoritosContext);
-  return favoritos.some(produto => produto.id === id);
+  return favoritos.some((produto) => produto.id === id);
 }
