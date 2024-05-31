@@ -2,7 +2,7 @@ const { firstName } = require("../validations");
 
 describe("firstName", () => {
   it("deve retornar o primeiro nome de uma string de nome completo", () => {
-    expect(firstName("Caio Cesar")).toBe("Caio");
+    expect(firstName("Caio Cesar Faneco Gonzaga")).toBe("Caio");
   });
 
   it("deve retornar o nome completo se nenhum espaço em branco for encontrado", () => {
@@ -15,5 +15,9 @@ describe("firstName", () => {
 
   it("deve lançar um erro se a entrada for nula", () => {
     expect(() => firstName(null)).toThrow();
+  });
+
+  it("deve lançar um erro se a entrada for indefinida", () => {
+    expect(() => firstName(undefined)).toThrow();
   });
 });

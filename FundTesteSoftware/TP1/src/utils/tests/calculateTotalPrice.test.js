@@ -21,4 +21,17 @@ describe("calculateTotalPrice", () => {
     ];
     expect(() => calculateTotalPrice(products)).toThrow();
   });
+
+  it("should throw an error if the input is null or undefined", () => {
+    expect(() => calculateTotalPrice(null)).toThrow();
+    expect(() => calculateTotalPrice(undefined)).toThrow();
+  });
+
+  it("deve lançar um erro se o objeto do produto não tiver propriedades 'price' ou 'quantity'", () => {
+    const products = [
+      { name: "Product 1", quantity: 2 },
+      { name: "Product 2", price: 15 },
+    ];
+    expect(() => calculateTotalPrice(products)).toThrow();
+  });
 });

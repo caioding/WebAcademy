@@ -15,4 +15,14 @@ describe("verifyStockAvailability", () => {
   it("deve retornar falso se o tipo de produto não existir no estoque", () => {
     expect(verifyStockAvailability("nonexistent", 1)).toBe(false);
   });
+
+  it("deve lançar um erro se a entrada for nula ou indefinida", () => {
+    expect(() => verifyStockAvailability(null, 1)).toThrow();
+    expect(() => verifyStockAvailability("laptop", undefined)).toThrow();
+  });
+
+  it("deve retornar falso se a quantidade for zero ou negativa", () => {
+    expect(verifyStockAvailability("laptop", 0)).toBe(false);
+    expect(verifyStockAvailability("laptop", -1)).toBe(false);
+  });
 });

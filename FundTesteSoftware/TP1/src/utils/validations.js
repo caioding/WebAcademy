@@ -5,6 +5,10 @@
  * @returns {string} - The first name extracted from the full name, or the name itself if no blank space is found.
  */
 function firstName(fullName) {
+  if (fullName === null || fullName === undefined) {
+    throw new Error("Input cannot be null or undefined");
+  }
+
   const blankSpace = fullName.indexOf(" ");
 
   if (blankSpace === -1) return fullName;
@@ -20,6 +24,19 @@ function firstName(fullName) {
  *                      otherwise returns false.
  */
 function verifyStockAvailability(productType, qty) {
+  if (
+    productType === null ||
+    productType === undefined ||
+    qty === null ||
+    qty === undefined
+  ) {
+    throw new Error("Input cannot be null or undefined");
+  }
+
+  if (qty <= 0) {
+    return false;
+  }
+
   const stock = {
     laptop: 10,
     smartphone: 20,
@@ -48,6 +65,10 @@ function verifyStockAvailability(productType, qty) {
  *   ]
  */
 function calculateTotalPrice(products) {
+  if (products === null || products === undefined) {
+    throw new Error("Input cannot be null or undefined");
+  }
+
   let total = 0;
 
   for (let product of products) {
