@@ -65,4 +65,86 @@ describe("ItemFavorito", () => {
 
     expect(setFavoritos).toHaveBeenCalledTimes(1);
   });
+
+  it("deve remover item dos favoritos quando o botão de remover é clicado", async () => {
+    const setFavoritos = jest.fn();
+    const useProdutoFavoritoMock = useProdutoFavorito as jest.Mock;
+    useProdutoFavoritoMock.mockReturnValue(false);
+
+    const produtoMockado = mockProdutos[0];
+
+    render(
+      <FavoritosProvider>
+        <ItemFavorito
+          itemFavorito={produtoMockado}
+          setFavoritos={setFavoritos}
+        />
+      </FavoritosProvider>
+    );
+
+    const botao = screen.getByRole("button", {
+      name: /Remover/i,
+    });
+
+    await userEvent.click(botao);
+
+    expect(setFavoritos).toHaveBeenCalledWith(expect.any(Function));
+    const newFavorites = setFavoritos.mock.calls[0][0]([produtoMockado]);
+    expect(newFavorites).toEqual([]);
+  });
+
+  it("deve calcular o valor com desconto corretamente", () => {
+    const useProdutoFavoritoMock = useProdutoFavorito as jest.Mock;
+    useProdutoFavoritoMock.mockReturnValue(false);
+
+    const produtoMockado = mockProdutos[0];
+    const { preco, desconto } = produtoMockado;
+
+    const precoComDesconto = calculaValorComPorcentagemDeDesconto(
+      Number(produtoMockado.preco),
+      produtoMockado.desconto
+    );
+
+    render(
+      <FavoritosProvider>
+        <ItemFavorito itemFavorito={produtoMockado} setFavoritos={() => {}} />
+      </FavoritosProvider>
+    );
+
+    const precoEsperado =
+      Number(preco) - (Number(preco) * Number(desconto)) / 100;
+
+    expect(
+      screen.getByText(`R$ ${precoEsperado.toFixed(2)}`)
+    ).toBeInTheDocument();
+
+    expect(precoComDesconto).toEqual(precoEsperado);
+  });
+
+  it("deve chamar setFavoritos com o array de produtos atualizado quando o botão de remover é clicado", async () => {
+    const setFavoritos = jest.fn();
+    const useProdutoFavoritoMock = useProdutoFavorito as jest.Mock;
+    useProdutoFavoritoMock.mockReturnValue(false);
+
+    const produtoMockado = mockProdutos[0];
+
+    render(
+      <FavoritosProvider>
+        <ItemFavorito
+          itemFavorito={produtoMockado}
+          setFavoritos={setFavoritos}
+        />
+      </FavoritosProvider>
+    );
+
+    const botao = screen.getByRole("button", {
+      name: /Remover/i,
+    });
+
+    await userEvent.click(botao);
+
+    expect(setFavoritos).toHaveBeenCalledWith(expect.any(Function));
+    const newFavorites = setFavoritos.mock.calls[0][0]([produtoMockado]);
+    expect(newFavorites).toEqual([]);
+  });
 });
