@@ -1,3 +1,4 @@
 # Web Academy UFAM
 
-O Web Academy é um projeto da Universidade Federal do Amazonas - UFAM em parceria com a Motorola e que oferece uma capacitação de 7 meses em Desenvolvimento Web Full Stack, a qual abrange os temas mais recentes e usados no mercado de trabalho como React JS, Banco de Dados, Docker e outros.
+O Web Academy é uma iniciativa da Universidade Federal do Amazonas - UFAM em colaboração com a Motorola, que proporciona um curso intensivo de 7 meses voltado para capacitação em Desenvolvimento Web Full Stack. O programa abrange os temas mais atuais e demandados no mercado de trabalho, como React JS, Banco de Dados, TypeScript, entre outros.
+
