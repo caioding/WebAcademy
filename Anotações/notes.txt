@@ -1,7 +1,0 @@
-DATABASE_URL="mysql://root:senha321@127.0.0.1:3306/webacad"
-
-DATABASE_URL="mysql://root:senha123@localhost:4406/loja"
-
-DATABASE_URL="mysql://webdb:webacademy@172.17.0.2:3306/prismadb"
-
-DATABASE_URL="mysql://webdb:senha123@172.17.0.2:3306/prismaloja" #funcionando
